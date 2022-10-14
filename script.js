@@ -1,4 +1,4 @@
-import { WORDS } from "./words.js";
+import { WORDS } from "./name.js";
 
 const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
@@ -65,13 +65,12 @@ function checkGuess () {
         toastr.error("Not enough letters!")
         return
     }
-/*
+    /*
     if (!WORDS.includes(guessString)) {
         toastr.error("Word not in list!")
         return
     }
-*/
-    
+    */
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
         let box = row.children[i]
@@ -169,12 +168,12 @@ document.addEventListener("keyup", (e) => {
         return
     }
 
-    if (pressedKey === "Enter") {
+    if (pressedKey === "Giska") {
         checkGuess()
         return
     }
 
-    let found = pressedKey.match(/[a-z]/gi)
+    let found = pressedKey.match(/[\S]/gi)
     if (!found || found.length > 1) {
         return
     } else {
