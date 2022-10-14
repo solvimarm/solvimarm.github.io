@@ -4,9 +4,19 @@ const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
+const names = WORDS.filter(isCorrectLength).map(setLowerCase)
+//let rightGuessString = names[Math.floor(Math.random() * names.length)]
+const rightGuessString = "sölvi";
 
 console.log(rightGuessString)
+
+function isCorrectLength(name){
+    return name.length === 5;
+}
+
+function setLowerCase(name){
+    return name.toLowerCase();
+}
 
 function initBoard() {
     let board = document.getElementById("game-board");
@@ -62,15 +72,15 @@ function checkGuess () {
     }
 
     if (guessString.length != 5) {
-        toastr.error("Not enough letters!")
+        toastr.error("Þetta eru ekki næginlega margir stafir")
         return
     }
-    /*
-    if (!WORDS.includes(guessString)) {
-        toastr.error("Word not in list!")
+
+    if (!names.includes(guessString)) {
+        toastr.error("Þetta er ekki gilt nafn")
         return
     }
-    */
+
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
         let box = row.children[i]
