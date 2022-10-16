@@ -4,14 +4,16 @@ const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-const names = WORDS.filter(isCorrectLength).map(setLowerCase)
+let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)].toLowerCase();
+const names = WORDS.filter(isCorrectLength).map(setLowerCase);
+//const names = WORDS
 //let rightGuessString = names[Math.floor(Math.random() * names.length)]
-const rightGuessString = "sölvi";
+//const rightGuessString = "sölvi";
 
 console.log(rightGuessString)
 
 function isCorrectLength(name){
-    return name.length === 5;
+    return name.length === name.length;
 }
 
 function setLowerCase(name){
@@ -25,7 +27,7 @@ function initBoard() {
         let row = document.createElement("div")
         row.className = "letter-row"
         
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < rightGuessString.length; j++) {
             let box = document.createElement("div")
             box.className = "letter-box"
             row.appendChild(box)
@@ -54,7 +56,7 @@ function shadeKeyBoard(letter, color) {
 }
 
 function deleteLetter () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[6- guessesRemaining]
     let box = row.children[nextLetter - 1]
     box.textContent = ""
     box.classList.remove("filled-box")
@@ -63,15 +65,15 @@ function deleteLetter () {
 }
 
 function checkGuess () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[6- guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
 
     for (const val of currentGuess) {
         guessString += val
     }
-
-    if (guessString.length != 5) {
+    console.log("Gisk: "+guessString)
+    if (guessString.length != rightGuessString.length) {
         toastr.error("Þetta eru ekki næginlega margir stafir")
         return
     }
@@ -81,12 +83,13 @@ function checkGuess () {
         return
     }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < rightGuessString.length; i++) {
         let letterColor = ''
         let box = row.children[i]
         let letter = currentGuess[i]
         
         let letterPosition = rightGuess.indexOf(currentGuess[i])
+        console.log("Letter Position: " + letterPosition)
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
@@ -132,11 +135,10 @@ function checkGuess () {
 }
 
 function insertLetter (pressedKey) {
-    if (nextLetter === 5) {
+    if (nextLetter === rightGuessString.length) {
         return
     }
     pressedKey = pressedKey.toLowerCase()
-
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let box = row.children[nextLetter]
     animateCSS(box, "pulse")

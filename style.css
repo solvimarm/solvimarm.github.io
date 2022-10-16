@@ -40,7 +40,9 @@ h1 {
 #keyboard-cont div {
   display: flex;
 }
-
+.icelandic-row {
+  margin: 0.5rem 0;
+}
 .second-row {
   margin: 0.5rem 0;
 }
