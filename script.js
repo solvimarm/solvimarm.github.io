@@ -4,11 +4,11 @@ const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)].toLowerCase();
+//let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)].toLowerCase();
 const names = WORDS.filter(isCorrectLength).map(setLowerCase);
 //const names = WORDS
 //let rightGuessString = names[Math.floor(Math.random() * names.length)]
-//const rightGuessString = "sölvi";
+const rightGuessString = "apríl";
 
 console.log(rightGuessString)
 
