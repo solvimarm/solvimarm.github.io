@@ -8,7 +8,7 @@ let nextLetter = 0;
 const names = WORDS.filter(isCorrectLength).map(setLowerCase);
 //const names = WORDS
 //let rightGuessString = names[Math.floor(Math.random() * names.length)]
-const rightGuessString = "Sunna";
+const rightGuessString = "sunna";
 
 console.log(rightGuessString)
 
