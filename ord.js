@@ -16069,5 +16069,6 @@ export const WORDS = [
 "öxlum",
 "öxull",
 "öxuls",
-"pepsi"
+    "pepsi",
+    "píkur"
 ]
